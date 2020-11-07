@@ -69,6 +69,15 @@ round(accuracy(ma.trailing_2, sales.ts), 3)
 round(accuracy(ma.trailing_6, sales.ts), 3)
 round(accuracy(ma.trailing_12, sales.ts), 3)
 
+##Q3
+## a)
+## DE-TRENDING and DE-SEASONALIZING TIME SERIES USING REGRESSION
+## CREATE TRAILING MA USING RESIDUALS.
+## FORECAST USING REGRESSION MODEL WITH LINEAR TREND AND TRAILING MA INTO FUTURE PERIODS.
+# Fit a regression model with trend and seasonality.
+reg.trend.seas <- tslm(sales.ts ~ trend + season)
+summary(reg.trend.seas)
+
 ## Q4
 ## a)
 ## CREATE DATA PARTITION.
