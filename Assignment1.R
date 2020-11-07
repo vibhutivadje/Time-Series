@@ -2,7 +2,7 @@
 
 install.packages("forecast")
 library(forecast)
-
+library(zoo)
 ##Q1:
 ##a)
 ## CREATE DATA FRAME. 
@@ -37,6 +37,37 @@ autoplot(sales.stl, main = "Gorcery Store Time Series Components")
 # for different lags (up to maximum of 12).
 autocor <- Acf(sales.ts, lag.max = 12, main = "Autocorrelation for Grocery Store Sales")
 
+##Q2
+##a) Trailing MAs
+## Create trailing moving average with window (number of periods) k = 2,6,12.
+## In rollmean(), use argument align = "right" to calculate a trailing MA.
+ma.trailing_2 <- rollmean(sales.ts, k = 2, align = "right")
+ma.trailing_6 <- rollmean(sales.ts, k = 6, align = "right")
+ma.trailing_12 <- rollmean(sales.ts, k = 12, align = "right")
+
+##b)
+##Window K = 2:
+## Create forecast for residuals for the 12 periods into the future.
+ma.trailing_2.pred <- forecast(ma.trailing_2, h = 12, level = 0)
+ma.trailing_2.pred
+
+##Window K =6:
+## Create forecast for residuals for the 12 periods into the future.
+ma.trailing_6.pred <- forecast(ma.trailing_6, h = 12, level = 0)
+ma.trailing_6.pred
+
+##Window K =12:
+## Create forecast for residuals for the 12 periods into the future.
+ma.trailing_12.pred <- forecast(ma.trailing_12, h = 12, level = 0)
+ma.trailing_12.pred
+
+##c)
+# Use accuracy() function to identify common accuracy measures.
+# Use round() function to round accuracy measures to three decimal digits.
+round(accuracy((snaive(sales.ts))$fitted, sales.ts), 3)
+round(accuracy(ma.trailing_2, sales.ts), 3)
+round(accuracy(ma.trailing_6, sales.ts), 3)
+round(accuracy(ma.trailing_12, sales.ts), 3)
 
 ## Q4
 ## a)
