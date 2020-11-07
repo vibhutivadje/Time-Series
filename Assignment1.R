@@ -21,7 +21,7 @@ sales.ts
 ##b):
 ## Use plot() to plot time series data  
 plot(sales.ts, 
-     xlab = "Time", ylab = "Sales", 
+     xlab = "Time", ylab = "Sales (in million $) ", 
      ylim = c(100, 500), main = "Grocery Store Sales", col = "blue")
 
 # Use stl() function to plot times series components of the original data. 
@@ -35,12 +35,7 @@ autoplot(sales.stl, main = "Gorcery Store Time Series Components")
 ##c):
 # Use Acf() function to identify autocorrelation and plot autocorrelation
 # for different lags (up to maximum of 12).
-autocor <- Acf(sales.ts, lag.max = 12, main = "Autocorrelation for Amtrak Ridership")
-
-# Display autocorrelation coefficients for various lags.
-Lag <- round(autocor$lag, 0)
-ACF <- round(autocor$acf, 3)
-data.frame(Lag, ACF)
+autocor <- Acf(sales.ts, lag.max = 12, main = "Autocorrelation for Grocery Store Sales")
 
 
 ## Q4
