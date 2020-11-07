@@ -78,6 +78,10 @@ round(accuracy(ma.trailing_12, sales.ts), 3)
 reg.trend.seas <- tslm(sales.ts ~ trend + season)
 summary(reg.trend.seas)
 
+# Create forecast for the 12 periods into the future.
+reg.trend.seas.pred <- forecast(reg.trend.seas, h = 12, level = 0)
+reg.trend.seas.pred
+
 ## Q4
 ## a)
 ## CREATE DATA PARTITION.
