@@ -130,3 +130,5 @@ nTrain <- length(sales.ts) - nValid
 train.ts <- window(sales.ts, start = c(2015, 1), end = c(2015, nTrain))
 valid.ts <- window(sales.ts, start = c(2015, nTrain + 1), 
                    end = c(2015, nTrain + nValid))
+train.ts
+valid.ts
