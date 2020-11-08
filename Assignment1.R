@@ -110,6 +110,14 @@ names(total.reg.ma.pred) <- c("Regression Forecast", "Residuals Forecast",
                               "Combined Forecast")
 total.reg.ma.pred
 
+## c)
+# Use accuracy() function to identify common accuracy measures.
+# Use round() function to round accuracy measures to three decimal digits.
+round(accuracy(snaive(sales.ts)$fitted, sales.ts), 3)
+round(accuracy(reg.trend.seas.pred$fitted, sales.ts), 3)
+round(accuracy(reg.trend.seas.pred$fitted+ma.trailing.res_2, sales.ts), 3)
+
+
 ## Q4
 ## a)
 ## CREATE DATA PARTITION.
