@@ -82,6 +82,34 @@ summary(reg.trend.seas)
 reg.trend.seas.pred <- forecast(reg.trend.seas, h = 12, level = 0)
 reg.trend.seas.pred
 
+## b)
+# Identify and display residulas for time series based on the regression
+# (differences between actual and regression values in the same periods)
+reg.trend.seas.res <- reg.trend.seas$residuals
+reg.trend.seas.res
+
+# Apply trailing MA with 12 periods in the window to residuals.
+ma.trailing.res_2 <- rollmean(reg.trend.seas.res, k = 2, align = "right")
+ma.trailing.res_2
+
+# Create forecast for residuals for the 12 periods into the future.
+ma.trailing.res_2.pred <- forecast(ma.trailing.res_2, h = 12, level = 0)
+ma.trailing.res_2.pred
+
+# To develop real forecast for 12 periods into the future, 
+# combine regression forecast and trailing MA forecast for residuals.
+ts.forecast.12 <- reg.trend.seas.pred$mean + ma.trailing.res_2.pred$mean
+ts.forecast.12
+
+# Create a table with regression forecast, trailing MA for residuals
+# and total forecast for 12 months into the future
+total.reg.ma.pred <- data.frame(reg.trend.seas.pred$mean, 
+                                ma.trailing.res_2.pred$mean, ts.forecast.12)
+
+names(total.reg.ma.pred) <- c("Regression Forecast", "Residuals Forecast",
+                              "Combined Forecast")
+total.reg.ma.pred
+
 ## Q4
 ## a)
 ## CREATE DATA PARTITION.
