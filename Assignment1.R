@@ -138,4 +138,16 @@ valid.ts
 # Use ets() function with model = "ZZZ", i.e., automated selection of
 # error, trend, and seasonality options.
 # Use optimal alpha, beta, & gamma to fit HW over the training period.
+hw.ZZZ <- ets(train.ts, model = "MMM")
+hw.ZZZ 
+
+# Use forecast() function to make predictions using this HW model with 
+# validation period (nValid). 
+hw.ZZZ.pred <- forecast(hw.ZZZ, h = nValid, level = 0)
+hw.ZZZ.pred
+
+
+
+
+
 
