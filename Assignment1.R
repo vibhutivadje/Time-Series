@@ -132,3 +132,10 @@ valid.ts <- window(sales.ts, start = c(2015, nTrain + 1),
                    end = c(2015, nTrain + nValid))
 train.ts
 valid.ts
+
+
+## b)
+# Use ets() function with model = "ZZZ", i.e., automated selection of
+# error, trend, and seasonality options.
+# Use optimal alpha, beta, & gamma to fit HW over the training period.
+
