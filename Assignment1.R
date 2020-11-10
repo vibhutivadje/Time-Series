@@ -150,6 +150,23 @@ hw.ZZZ.pred
 ## FORECAST WITH HOLT-WINTER'S MODEL USING ENTIRE DATA SET INTO
 ## the FUTURE FOR 12 PERIODS.
 
+# Create Holt-Winter's exponenthial smoothing (hW) for full Amtrak dataset. 
+# Use ets() function with model = "ZZZ", to identify the best hw option
+# and optimal alpha, beta, & gamma to fit hw for the entire data period.
+HW.ZZZ <- ets(sales.ts, model = "ZZZ")
+HW.ZZZ 
+
+# Use forecast() function to make predictions using this hw model for
+# 12 month into the futurre.
+HW.ZZZ.pred <- forecast(HW.ZZZ, h = 12 , level = 0)
+HW.ZZZ.pred
+
+##d)
+# Identify performancce measures for hw forecast aod comapre it with seasonal naive
+# forecast.
+round(accuracy(snaive(sales.ts)$fitted, sales.ts), 3)
+round(accuracy(HW.ZZZ.pred$fitted, sales.ts), 3)
+
 
 
 
