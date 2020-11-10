@@ -146,7 +146,9 @@ hw.ZZZ
 hw.ZZZ.pred <- forecast(hw.ZZZ, h = nValid, level = 0)
 hw.ZZZ.pred
 
-
+##c)
+## FORECAST WITH HOLT-WINTER'S MODEL USING ENTIRE DATA SET INTO
+## the FUTURE FOR 12 PERIODS.
 
 
 
