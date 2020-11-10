@@ -167,6 +167,9 @@ HW.ZZZ.pred
 round(accuracy(snaive(sales.ts)$fitted, sales.ts), 3)
 round(accuracy(HW.ZZZ.pred$fitted, sales.ts), 3)
 
+##e)
 
+round(accuracy(reg.trend.seas.pred$fitted+ma.trailing.res_2, sales.ts), 3)
+round(accuracy(HW.ZZZ.pred$fitted, sales.ts), 3)
 
 
