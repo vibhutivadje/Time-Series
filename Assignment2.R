@@ -58,5 +58,8 @@ train.lin.pred
 # Use tslm() function to create quadratic (polynomial) trend model.
 train.quad <- tslm(train.ts ~ trend + I(trend^2))
 
+# See summary of quadratic trend model and asociated parameters.
+summary(train.quad)
+
 
 
