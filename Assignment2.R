@@ -39,3 +39,16 @@ nTrain <- length(revenue.ts) - nValid
 train.ts <- window(revenue.ts, start = c(2005, 1), end = c(2005, nTrain))
 valid.ts <- window(revenue.ts, start = c(2005, nTrain + 1), 
                    end = c(2005, nTrain + nValid))
+
+##b)
+##FIT REGRESSION MODEL WITH LINEAR TREND: MODEL 1
+# create regression model with linear trend.
+train.lin <- tslm(train.ts ~ trend) #Trend mean function B0+B1t+e
+
+# See summary of linear trend model and asociated parameters.
+summary(train.lin)
+
+# Apply forecast() function to make forecast for validation period.
+train.lin.pred <- forecast(train.lin, h = nValid, level = 0)
+train.lin.pred
+
