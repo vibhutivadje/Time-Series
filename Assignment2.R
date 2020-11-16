@@ -65,4 +65,11 @@ summary(train.quad)
 train.quad.pred <- forecast(train.quad, h = nValid, level = 0)
 train.quad.pred
 
+##FIT REGRESSION MODEL WITH Seasonality: MODEL 3.
+#tslm() function to create seasonal model.
+train.season <- tslm(train.ts ~ season)
+
+# See summary of seasonal model and asociated parameters.
+summary(train.season)
+
 
