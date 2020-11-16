@@ -44,6 +44,7 @@ valid.ts <- window(revenue.ts, start = c(2005, nTrain + 1),
 ##FIT REGRESSION MODEL WITH LINEAR TREND: MODEL 1
 # create regression model with linear trend.
 train.lin <- tslm(train.ts ~ trend) #Trend mean function B0+B1t+e
+#trend parameter means simply linear trend.
 
 # See summary of linear trend model and asociated parameters.
 summary(train.lin)
@@ -51,4 +52,11 @@ summary(train.lin)
 # Apply forecast() function to make forecast for validation period.
 train.lin.pred <- forecast(train.lin, h = nValid, level = 0)
 train.lin.pred
+
+##FIT REGRESSION MODEL WITH Quadratic(Polynominal) TREND: MODEL 2.
+
+# Use tslm() function to create quadratic (polynomial) trend model.
+train.quad <- tslm(train.ts ~ trend + I(trend^2))
+
+
 
