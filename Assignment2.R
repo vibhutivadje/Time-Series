@@ -54,12 +54,15 @@ train.lin.pred <- forecast(train.lin, h = nValid, level = 0)
 train.lin.pred
 
 ##FIT REGRESSION MODEL WITH Quadratic(Polynominal) TREND: MODEL 2.
-
 # Use tslm() function to create quadratic (polynomial) trend model.
 train.quad <- tslm(train.ts ~ trend + I(trend^2))
 
 # See summary of quadratic trend model and asociated parameters.
 summary(train.quad)
 
+# Apply forecast() function to make predictions for ts data in
+# validation set.  
+train.quad.pred <- forecast(train.quad, h = nValid, level = 0)
+train.quad.pred
 
 
