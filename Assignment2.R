@@ -72,4 +72,12 @@ train.season <- tslm(train.ts ~ season)
 # See summary of seasonal model and asociated parameters.
 summary(train.season)
 
+# If necessary, run the following code to identify seasons
+train.season$data 
+
+# Apply forecast() function to make predictions for ts with 
+# seasonality data in validation set.  
+train.season.pred <- forecast(train.season, h = nValid, level = 0)
+train.season.pred
+
 
