@@ -80,6 +80,7 @@ train.season$data
 train.season.pred <- forecast(train.season, h = nValid, level = 0)
 train.season.pred
 
+
 ## FIT REGRESSION MODEL WITH LINEAR TREND AND SEASONALITY: MODEL 4. 
 # create linear trend and seasonal model.
 train.trend.season <- tslm(train.ts ~ trend  + season)
@@ -87,4 +88,8 @@ train.trend.season <- tslm(train.ts ~ trend  + season)
 # See summary of quadratic trend and seasonality model and asociated parameters.
 summary(train.trend.season)
 
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+train.trend.season.pred <- forecast(train.trend.season, h = nValid, level = 0)
+train.trend.season.pred
 
