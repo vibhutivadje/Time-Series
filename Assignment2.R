@@ -93,3 +93,38 @@ summary(train.trend.season)
 train.trend.season.pred <- forecast(train.trend.season, h = nValid, level = 0)
 train.trend.season.pred
 
+## FIT REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY: MODEL 5
+
+# create Quadratic trend and seasonal model.
+train.quad.trend.season <- tslm(train.ts ~ trend  +I(trend^2)+ season)
+
+# See summary of quadratic trend and seasonality model and asociated parameters.
+summary(train.quad.trend.season)
+
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+train.quad.trend.season.pred <- forecast(train.quad.trend.season, h = nValid, level = 0)
+train.quad.trend.season.pred
+
+##c)
+## Apply Accuracy function
+###ACCURACY OF REGRESSION MODEL WITH LINEAR TREND: MODEL 1. 
+round(accuracy(train.lin.pred, valid.ts), 3)
+## ACCURACY OF REGRESSION MODEL WITH Quadratic(Polynominal) TREND: MODEL 2. 
+round(accuracy(train.quad.pred, valid.ts), 3)
+## ACCURACY OF REGRESSION MODEL WITH Seasonality: MODEL 3.
+round(accuracy(train.season.pred, valid.ts), 3)
+## ACCURACY OF REGRESSION MODEL WITH LINEAR TREND AND SEASONALITY: MODEL 4
+round(accuracy(train.trend.season.pred, valid.ts), 3)
+## ACCURACY OF REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY: MODEL 5
+round(accuracy(train.quad.trend.season.pred, valid.ts), 3)
+
+#***************************************************Q3:*************************************************************#
+
+
+
+
+
+
+
+
