@@ -121,6 +121,7 @@ round(accuracy(train.quad.trend.season.pred, valid.ts), 3)
 
 #***************************************************Q3:*************************************************************#
 
+##a)
 #Using Best Model (Model 5 and Model 4 ) 
 #for entire dataset to Forecast and Predict Walmarts revenue in the 4 quarters of 2020 & 2021
 
@@ -137,8 +138,8 @@ summary(revenue.quad.trend.season)
 
 # Apply forecast() function to make predictions for ts with 
 # trend and seasonality data in validation set.  
-revenue.quad.trend.season <- forecast(revenue.quad.trend.season, h = 4, level = 0)
-revenue.quad.trend.season
+revenue.quad.trend.season.pred <- forecast(revenue.quad.trend.season, h = 4, level = 0)
+revenue.quad.trend.season.pred
 
 
 
@@ -151,4 +152,18 @@ summary(revenue.lin.trend.season)
 # trend and seasonality data in validation set.  
 revenue.lin.trend.season.pred <- forecast(revenue.lin.trend.season, h = 4, level = 0)
 revenue.lin.trend.season.pred
+
+##b)
+## PERFORMANCE MEASURE OF REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY Model 5 
+# for naive model, seasonal naive, and regression model with quadratic trend and seasonality.
+round(accuracy(revenue.quad.trend.season.pred$fitted, revenue.ts),3)
+round(accuracy((naive(revenue.ts))$fitted, revenue.ts), 3)
+round(accuracy((snaive(revenue.ts))$fitted, revenue.ts), 3)
+
+## PERFORMANCE MEASURE OF REGRESSION MODEL WITH linear TREND AND SEASONALITY Model 4
+# for naive model, seasonal naive, and regression model with linear trend and seasonality.
+round(accuracy(revenue.lin.trend.season.pred$fitted, revenue.ts),3)
+round(accuracy((naive(revenue.ts))$fitted, revenue.ts), 3)
+round(accuracy((snaive(revenue.ts))$fitted, revenue.ts), 3)
+
 
