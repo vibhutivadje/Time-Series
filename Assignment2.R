@@ -121,8 +121,24 @@ round(accuracy(train.quad.trend.season.pred, valid.ts), 3)
 
 #***************************************************Q3:*************************************************************#
 
+#Using Best Model (Model 5 and Model 4 ) 
+#for entire dataset to Forecast and Predict Walmarts revenue in the 4 quarters of 2020 & 2021
+
+## REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY Model 5 
+
+# create quadratic trend and seasonality model.
+
+# create quadratic trend and seasonality model.
+revenue.quad.trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
+
+# see summary of linear trend equation and asociated parameters.
+summary(revenue.quad.trend.season)
 
 
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+revenue.quad.trend.season <- forecast(revenue.quad.trend.season, h = 4, level = 0)
+revenue.quad.trend.season
 
 
 
