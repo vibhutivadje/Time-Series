@@ -142,5 +142,12 @@ revenue.quad.trend.season
 
 
 
-
+## REGRESSION MODEL WITH LINEAR TREND AND SEASONALITY Model 4
+revenue.lin.trend.season <- tslm(revenue.ts ~ trend + season)
+# summary of linear trend equation and asociated parameters.
+summary(revenue.lin.trend.season)
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+shipment.lin.trend.season.pred <- forecast(shipment.lin.trend.season, h = 8, level = 0)
+shipment.lin.trend.season.pred
 
