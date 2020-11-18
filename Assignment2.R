@@ -155,15 +155,12 @@ revenue.lin.trend.season.pred
 
 ##b)
 ## PERFORMANCE MEASURE OF REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY Model 5 
+## PERFORMANCE MEASURE OF REGRESSION MODEL WITH linear TREND AND SEASONALITY Model 4
 # for naive model, seasonal naive, and regression model with quadratic trend and seasonality.
 round(accuracy(revenue.quad.trend.season.pred$fitted, revenue.ts),3)
-round(accuracy((naive(revenue.ts))$fitted, revenue.ts), 3)
-round(accuracy((snaive(revenue.ts))$fitted, revenue.ts), 3)
-
-## PERFORMANCE MEASURE OF REGRESSION MODEL WITH linear TREND AND SEASONALITY Model 4
-# for naive model, seasonal naive, and regression model with linear trend and seasonality.
 round(accuracy(revenue.lin.trend.season.pred$fitted, revenue.ts),3)
 round(accuracy((naive(revenue.ts))$fitted, revenue.ts), 3)
 round(accuracy((snaive(revenue.ts))$fitted, revenue.ts), 3)
+
 
 
