@@ -29,4 +29,13 @@ revenue.stl <- stl(revenue.ts, s.window = "periodic")
 revenue.stl
 autoplot(revenue.stl, main = "Walmart Revenue Time Series Components")
 
+#### CREATE DATA PARTITION.
+#Data Partiton with VAlidation partition of 16 periods and training partition of 46 periods
+nValid <- 16
+nTrain <- length(revenue.ts) - nValid
+train.ts <- window(revenue.ts, start = c(2005, 1), end = c(2005, nTrain))
+valid.ts <- window(revenue.ts, start = c(2005, nTrain + 1), 
+                   end = c(2005, nTrain + nValid))
+
+
 #**************************************************Q1:*************************************************************#
