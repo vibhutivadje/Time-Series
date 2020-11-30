@@ -71,4 +71,4 @@ summary(train.quad.trend.season)
 train.quad.trend.season.pred <- forecast(train.quad.trend.season, h = nValid, level = 0)
 train.quad.trend.season.pred
 
-
+##b)
