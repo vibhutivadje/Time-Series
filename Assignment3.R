@@ -57,5 +57,18 @@ Acf(diff.revenue.ts, lag.max = 8,
     main = "Autocorrelation for Walmart revenue")
 
 #**************************************************Q2:*************************************************************#
+## Two-level forecast with regression model and AR model for residuals
+##a) Regression model with quadratic trend and seasonality
+
+# create Quadratic trend and seasonal model.
+train.quad.trend.season <- tslm(train.ts ~ trend  +I(trend^2)+ season)
+
+# See summary of quadratic trend and seasonality model and asociated parameters.
+summary(train.quad.trend.season)
+
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+train.quad.trend.season.pred <- forecast(train.quad.trend.season, h = nValid, level = 0)
+train.quad.trend.season.pred
 
 
