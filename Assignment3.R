@@ -80,9 +80,19 @@ Acf(train.quad.trend.season.pred$residuals, lag.max = 8, main = "Autocorrelation
 ##AR(1) model for the regression residuals 
 res.ar1 <- Arima(train.quad.trend.season.pred$residuals, order = c(1,0,0))
 summary(res.ar1)
-Acf(res.ar1$residuals, lag.max = 12, 
-    main = "Autocorrelation for AR1 Residuals candy production Data")
+Acf(res.ar1$residuals, lag.max = 8, 
+    main = "Autocorrelation for AR1 Residuals Walmart revenue Data")
 
 res.ar1.pred <-  forecast(res.ar1, h = nValid, level = 0)
 res.ar1.pred
 
+##d)
+##two-level forecasting model (regression model with quadratic trend and seasonality + 
+##AR(1) model for residuals) for the validation period
+valid.two.level.pred <- train.quad.trend.season.pred$mean + res.ar1.pred$mean
+
+valid.df <- data.frame(valid.ts, train.trend.season.pred$mean, 
+                       res.ar1.pred$mean, valid.two.level.pred)
+names(valid.df) <- c("Ridership", "Reg.Forecast", 
+                     "AR(1)Forecast", "Combined.Forecast")
+valid.df
