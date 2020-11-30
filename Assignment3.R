@@ -72,3 +72,17 @@ train.quad.trend.season.pred <- forecast(train.quad.trend.season, h = nValid, le
 train.quad.trend.season.pred
 
 ##b)
+# identify autocorrealtion for the model residuals (training sets), and plot autocorrrelation for different 
+# lags (up to maximum of 8).
+Acf(train.quad.trend.season.pred$residuals, lag.max = 8, main = "Autocorrelation for regression models Residuals")
+
+##c)
+##AR(1) model for the regression residuals 
+res.ar1 <- Arima(train.quad.trend.season.pred$residuals, order = c(1,0,0))
+summary(res.ar1)
+Acf(res.ar1$residuals, lag.max = 12, 
+    main = "Autocorrelation for AR1 Residuals candy production Data")
+
+res.ar1.pred <-  forecast(res.ar1, h = nValid, level = 0)
+res.ar1.pred
+
