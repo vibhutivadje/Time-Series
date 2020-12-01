@@ -91,18 +91,16 @@ res.ar1.pred
 ##AR(1) model for residuals) for the validation period
 valid.two.level.pred <- train.quad.trend.season.pred$mean + res.ar1.pred$mean
 
-valid.df <- data.frame(valid.ts, train.trend.season.pred$mean, 
+valid.df <- data.frame(valid.ts, train.quad.trend.season.pred$mean, 
                        res.ar1.pred$mean, valid.two.level.pred)
-names(valid.df) <- c("Ridership", "Reg.Forecast", 
+names(valid.df) <- c("Revenue data", "Reg.Forecast", 
                      "AR(1)Forecast", "Combined.Forecast")
 valid.df
 
-###################Q2(e)###################
-## Develop a two-level forecast (regression model 
-#with quadratic  trend and seasonality and AR(1) model for residuals)
 
-# Use tslm() function to create quadratic trend and seasonality model.
-trend.season <- tslm(candy.ts ~ trend + I(trend^2) + season)
 
-# See summary of linear trend equation and asociated parameters.
-summary(trend.season)
+
+
+
+
+
