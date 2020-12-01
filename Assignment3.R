@@ -97,7 +97,11 @@ names(valid.df) <- c("Revenue data", "Reg.Forecast",
                      "AR(1)Forecast", "Combined.Forecast")
 valid.df
 
+##e)
+## Develop a two-level forecast (regression model 
+#with quadratic  trend and seasonality and AR(1) model for residuals)
 
+# Use tslm() function to create quadratic trend and seasonality model.
 
 
 
