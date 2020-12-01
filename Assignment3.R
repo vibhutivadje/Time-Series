@@ -102,7 +102,7 @@ valid.df
 #with quadratic  trend and seasonality and AR(1) model for residuals)
 
 # Use tslm() function to create quadratic trend and seasonality model.
-
+trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
 
 
 
