@@ -104,7 +104,17 @@ valid.df
 # Use tslm() function to create quadratic trend and seasonality model.
 trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
 
+# See summary of linear trend equation and asociated parameters.
+summary(trend.season)
 
+# Apply forecast() function to make predictions with quadratic trend and seasonal 
+# model into the future 12 months.  
+qua.trend.season.pred <- forecast(trend.season, h = 4, level = 0)
+qua.trend.season.pred
+qud.residuals.ar1 <- Arima(trend.season$residuals, order = c(1,0,0))
+summary(qud.residuals.ar1 )
 
+qud.residuals.ar1.pred <- forecast(qud.residuals.ar1, h = 4, level = 0)
+qud.residuals.ar1.pred
 
 
