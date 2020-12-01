@@ -96,3 +96,13 @@ valid.df <- data.frame(valid.ts, train.trend.season.pred$mean,
 names(valid.df) <- c("Ridership", "Reg.Forecast", 
                      "AR(1)Forecast", "Combined.Forecast")
 valid.df
+
+###################Q2(e)###################
+## Develop a two-level forecast (regression model 
+#with quadratic  trend and seasonality and AR(1) model for residuals)
+
+# Use tslm() function to create quadratic trend and seasonality model.
+trend.season <- tslm(candy.ts ~ trend + I(trend^2) + season)
+
+# See summary of linear trend equation and asociated parameters.
+summary(trend.season)
