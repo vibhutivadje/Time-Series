@@ -125,3 +125,9 @@ names(Total.df) <- c("Reg.Forecast",
                      "AR(1)Forecast", "Combined.Forecast")
 Total.df
 
+#*****************************************Q3:****************************************************#
+##a)
+## Arima(1,1,1) model for training data set.
+
+
+
