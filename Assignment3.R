@@ -117,4 +117,14 @@ summary(qud.residuals.ar1 )
 qud.residuals.ar1.pred <- forecast(qud.residuals.ar1, h = 4, level = 0)
 qud.residuals.ar1.pred
 
+Acf(qud.residuals.ar1$residuals, lag.max = 8,
+    main = "Autocorrelation for Residuals of Walmart revenue Data")
+
+two.level.pred <- qua.trend.season.pred$mean +qud.residuals.ar1.pred$mean
+
+Total.df <- data.frame(qua.trend.season.pred$mean, 
+                       qud.residuals.ar1.pred$mean, two.level.pred)
+names(Total.df) <- c("Reg.Forecast", 
+                     "AR(1)Forecast", "Combined.Forecast")
+Total.df
 
