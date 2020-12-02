@@ -44,9 +44,6 @@ valid.ts <- window(revenue.ts, start = c(2005, nTrain + 1),
 revenue.ts.ar1<- Arima(revenue.ts, order = c(1,0,0))
 summary(revenue.ts.ar1)
 
-revenue.ts.ar1.pred <- forecast(revenue.ts.ar1, h = 12, level = 0)
-revenue.ts.ar1.pred
-
 ##b)
 # Create differenced Walmart data using (lag-1)
 diff.revenue.ts <- diff(revenue.ts, lag = 1)
