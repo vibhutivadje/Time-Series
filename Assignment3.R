@@ -127,10 +127,11 @@ Total.df
 
 #*****************************************Q3:****************************************************#
 ##a)
-## Arima(1,1,1) model for training data set.
+## Arima(1,1,1)(1,1,1) model for training data set.
 ## summary report
-train.arma1 <- Arima(train.ts, order = c(1,1,1))
+train.arma1 <- Arima(train.ts, order = c(1,1,1), seasonal = c(1,1,1))
 summary(train.arma1)
 
+##
 
 
