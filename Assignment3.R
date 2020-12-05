@@ -129,6 +129,10 @@ Total.df
 ##a)
 ## Arima(1,1,1)(1,1,1) model for training data set.
 ## summary report
-train.arma1 <- Arima(train.ts, order = c(1,1,1), seasonal = c(1,1,1))
-summary(train.arma1)
+train.arma1.seas <- Arima(train.ts, order = c(1,1,1), seasonal = c(1,1,1))
+summary(train.arma1.seas)
 
+# Apply forecast() function to make predictions for ts with 
+# ARIMA model in validation set.    
+train.arima1.seas.pred <- forecast(train.arma1.seas, h = nValid, level = 0)
+train.arima1.seas.pred
