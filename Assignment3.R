@@ -132,10 +132,3 @@ Total.df
 train.arma1 <- Arima(train.ts, order = c(1,1,1), seasonal = c(1,1,1))
 summary(train.arma1)
 
-##
-# Apply forecast() function to make predictions for ts with 
-# seasonal ARIMA model for the future 12 periods. 
-arima.seas.pred <- forecast(train.arma1, h = 12, level = 0)
-arima.seas.pred
-
-
