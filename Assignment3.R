@@ -148,3 +148,9 @@ summary(train.auto.arima)
 train.auto.arima.pred <- forecast(train.auto.arima, h = nValid, level = 0)
 train.auto.arima.pred
 
+# Use accuracy() function to identify common accuracy measures 
+# for validation period forecast:
+round(accuracy(train.arima1.seas.pred, valid.ts), 3)
+round(accuracy(train.auto.arima.pred, valid.ts), 3)
+
+
