@@ -155,4 +155,23 @@ train.auto.arima.pred
 round(accuracy(train.arima1.seas.pred, valid.ts), 3)
 round(accuracy(train.auto.arima.pred, valid.ts), 3)
 
+##d)
+## Arima(1,1,1)(1,1,1) model for entire revenue data set.
+## summary report
+arma1.seas <- Arima(revenue.ts, order = c(1,1,1), seasonal = c(1,1,1))
+summary(arma1.seas)
+
+# Apply forecast() function to make predictions for ts with 
+# seasonal ARIMA model for the future 12 periods. 
+arima1.seas.pred <- forecast(arma1.seas, h = 4, level = 0)
+arima1.seas.pred
+
+
+## FIT AUTO ARIMA MODELS FOR ENTIRE DATA SET. 
+
+# Use auto.arima() function to fit ARIMA model for entire data set.
+# use summary() to show auto ARIMA model and its parameters for entire data set.
+auto.arima <- auto.arima(revenue.ts)
+summary(auto.arima)
+
 
