@@ -135,4 +135,11 @@ summary(train.arma1.seas)
 # Apply forecast() function to make predictions for ts with 
 # ARIMA model in validation set.    
 train.arima1.seas.pred <- forecast(train.arma1.seas, h = nValid, level = 0)
-train.arima1.seas.pred
+
+##b)
+## FIT AUTO ARIMA MODEL.
+# Use auto.arima() function to fit ARIMA model.
+# Use summary() to show auto ARIMA model and its parameters.
+train.auto.arima <- auto.arima(train.ts)
+summary(train.auto.arima)
+
