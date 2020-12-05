@@ -174,4 +174,22 @@ arima1.seas.pred
 auto.arima <- auto.arima(revenue.ts)
 summary(auto.arima)
 
+# Apply forecast() function to make predictions for ts with 
+# auto ARIMA model for the future 12 periods. 
+auto.arima.pred <- forecast(revenue.ts, h = 4, level = 0)
+auto.arima.pred
 
+
+# MEASURE FORECAST ACCURACY FOR ENTIRE DATA SET.
+
+# Use accuracy() function to identify common accuracy measures for:
+# (1) regression model with quadratic trend and seasonality
+# (2) two level model with (with AR(1) model for residuals)
+# (1) Seasonal ARIMA (1,1,1)(1,1,1) Model,
+# (1) Auto ARIMA Model,
+# (2) Seasonal naive forecast, and
+# (3) Naive forecast.
+round(accuracy(arima.seas.pred$fitted, ridership.ts), 3)
+round(accuracy(auto.arima.pred$fitted, ridership.ts), 3)
+round(accuracy((snaive(ridership.ts))$fitted, ridership.ts), 3)
+round(accuracy((naive(ridership.ts))$fitted, ridership.ts), 3)
