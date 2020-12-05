@@ -191,6 +191,11 @@ trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
 # See summary of linear trend equation and associated parameters.
 summary(trend.season)
 
+# Apply forecast() function to make predictions for ts with 
+# trend and seasonality data in validation set.  
+trend.season.pred <- forecast(trend.season, h = 4, level = 0)
+trend.season.pred
+
 # Use Arima() function to fit AR(1) model for regression residuals.
 # The ARIMA model order of order = c(1,0,0) gives an AR(1) model.
 # Use forecast() function to make prediction of residuals into the future 12 months.
@@ -202,12 +207,15 @@ summary(residual.ar1)
 
 # Use accuracy() function to identify common accuracy measures for:
 # (1) regression model with quadratic trend and seasonality
+round(accuracy(trend.season.pred$fitted, revenue.ts),3)
 # (2) two level model with (with AR(1) model for residuals)
+round(accuracy(trend.season$fitted + residual.ar1$fitted, revenue.ts), 3)
 # (3) Seasonal ARIMA (1,1,1)(1,1,1) Model,
+round(accuracy(arima1.seas.pred$fitted, revenue.ts), 3)
 # (4) Auto ARIMA Model,
+round(accuracy(auto.arima.pred$fitted, revenue.ts), 3)
 # (5) Seasonal naive forecast, and
-round(accuracy(trend.season$fitted + residual.ar1$fitted, ridership.ts), 3)
-round(accuracy(arima.seas.pred$fitted, ridership.ts), 3)
-round(accuracy(auto.arima.pred$fitted, ridership.ts), 3)
-round(accuracy((snaive(revenue.ts))$fitted, ridership.ts), 3)
+round(accuracy((snaive(revenue.ts))$fitted, revenue.ts), 3)
+
+
 
