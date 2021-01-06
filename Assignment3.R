@@ -105,7 +105,7 @@ trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
 summary(trend.season)
 
 # Apply forecast() function to make predictions with quadratic trend and seasonal 
-# model into the future 12 months.  
+
 qua.trend.season.pred <- forecast(trend.season, h = 4, level = 0)
 qua.trend.season.pred
 qud.residuals.ar1 <- Arima(trend.season$residuals, order = c(1,0,0))
@@ -180,36 +180,14 @@ auto.arima.pred <- forecast(revenue.ts, h = 4, level = 0)
 auto.arima.pred
 
 
+##e)
 # MEASURE FORECAST ACCURACY FOR ENTIRE DATA SET.
-
-## FIT REGRESSION MODEL WITH QUADRATIC TREND AND SEASONALITY 
-## FOR ENTIRE DATASET
-
-# Use tslm() function to create quadratic trend and seasonality model.
-trend.season <- tslm(revenue.ts ~ trend + I(trend^2) + season)
-
-# See summary of linear trend equation and associated parameters.
-summary(trend.season)
-
-# Apply forecast() function to make predictions for ts with 
-# trend and seasonality data in validation set.  
-trend.season.pred <- forecast(trend.season, h = 4, level = 0)
-trend.season.pred
-
-# Use Arima() function to fit AR(1) model for regression residuals.
-# The ARIMA model order of order = c(1,0,0) gives an AR(1) model.
-# Use forecast() function to make prediction of residuals into the future 12 months.
-residual.ar1 <- Arima(trend.season$residuals, order = c(1,0,0))
-residual.ar1.pred <- forecast(residual.ar1, h = 4, level = 0)
-
-# Use summary() to identify parameters of AR(1) model.
-summary(residual.ar1)
 
 # Use accuracy() function to identify common accuracy measures for:
 # (1) regression model with quadratic trend and seasonality
-round(accuracy(trend.season.pred$fitted, revenue.ts),3)
+round(accuracy(qua.trend.season.pred$fitted, revenue.ts),3)
 # (2) two level model with (with AR(1) model for residuals)
-round(accuracy(trend.season$fitted + residual.ar1$fitted, revenue.ts), 3)
+round(accuracy(qua.trend.season.pred$fitted + qud.residuals.ar1.pred$fitted, revenue.ts), 3)
 # (3) Seasonal ARIMA (1,1,1)(1,1,1) Model,
 round(accuracy(arima1.seas.pred$fitted, revenue.ts), 3)
 # (4) Auto ARIMA Model,
